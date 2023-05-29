@@ -1,0 +1,15 @@
+
+background-image: linear-gradient(to right, #8360c3, #2ebf91);
+
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

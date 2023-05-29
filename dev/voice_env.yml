@@ -1,0 +1,19 @@
+
+name: anki_proj_voice
+channels:
+    - defaults
+dependencies:
+    - pip
+    - python=3.9
+    - pip:
+          - pyaudio
+          - requests
+          - torch
+          - torchaudio
+          - openai
+          - pvporcupine
+          - mypy
+          - aqt[qt6]
+          - pypdf==3.7.0
+          - flask
+          - pymupdf

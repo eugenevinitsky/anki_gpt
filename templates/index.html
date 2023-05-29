@@ -1,0 +1,141 @@
+<!doctype html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#anki-submit').click(function(e) {
+            e.preventDefault();
+            $('#anki-form').attr('action', "{{ url_for('upload_to_anki') }}");
+            $('#anki-form').submit();
+        });
+
+        $('#txt-submit').click(function(e) {
+            e.preventDefault();
+            $('#anki-form').attr('action', "{{ url_for('upload_to_txt') }}");
+            $('#anki-form').submit();
+        });
+    });
+</script>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+      html, body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        background: #4ca1af;
+        background: -webkit-linear-gradient(315deg, #4ca1af, #c4e0e5);
+        background: linear-gradient(315deg, #4ca1af, #c4e0e5);
+      }
+      .heading-box {
+        border: 1px solid black;
+        padding: 0px;
+        margin: 0px;
+      }
+      .box-column-left {
+        border: 0px;
+        padding: 10px;
+        margin: 0px;
+      }
+      .box-column {
+        border: 1px solid black;
+        border-top-width: 0px;
+        border-bottom-width: 0px;
+        border-right-width: 0px;
+        padding: 10px;
+        margin: 0px;
+      }
+      .box-row{
+        border: 1px solid black;
+        border-top-width: 0px;
+        padding: 0px;
+        margin: 0px;
+      }
+      h1 {
+        margin: 20px;
+        padding: 10px;
+      }
+      h4 {
+        text-align: center;
+      }
+      .button-container {
+        display: flex;
+        justify-content: center;
+      }
+      .upload-button {
+        font-size: 14px;
+        background-color: white;
+        border: none;
+        margin: 0.75em 0.75em;
+        border-radius: 4px;
+        padding: 0.25em 1em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1><center>PDF to Anki</center></h1>
+
+    <br>
+
+    <div class="button-container">
+      <form method="POST" enctype="multipart/form-data" action="{{ url_for('analyze_pdf') }}" style="margin-bottom: 2.5em;">
+        <input type="file" name="pdf_file">
+        <input type="submit" value="Get Anki Cards!" class="upload-button">
+      </form>
+    </div>
+
+
+    <div class="container-fluid">
+      <form method="POST" enctype="multipart/form-data" action="{{ url_for('upload_to_anki') }}" id="anki-form">
+        <div class="row heading-box">
+          <div class="col-md-1 box-column-left">
+            <h4>Upload</h4>
+          </div>
+          <div class="col-md-3 box-column">
+            <h4>Highlighted Text</h4>
+          </div>
+          <div class="col-md-4 box-column">
+            <h4>Questions</h4>
+          </div>
+          <div class="col-md-4 box-column">
+            <h4>Answers</h4>
+          </div>
+        </div>
+
+        {% for i in range(data|length) %}
+          <div class="row box-row">
+            <div class="col-sm-1 box-column-left">
+                <center><input type="checkbox" name="should_upload_{{ i }}" value="1"checked></center>
+            </div>
+            <div class="col-sm-3 box-column">{{ data[i][0] }}</div>
+            <div class="col-sm-4 box-column">
+              <textarea class="form-control" name="item_{{ i }}_1" rows="3">{{ data[i][1] }}</textarea>
+            </div>
+            <div class="col-sm-4 box-column">
+              <textarea class="form-control" name="item_{{ i }}_2" rows="3">{{ data[i][2] }}</textarea>
+            </div>
+          </div>
+        {% endfor %}
+
+        <center>
+          <div class="button-container">
+            <input type="submit" id="anki-submit" value="Upload To Anki" style="margin: 2em;" class="upload-button">
+            <input type="submit" id="txt-submit" value="Get Txt File" style="margin: 2em;" class="upload-button">
+          </div>
+        </center>
+      </form>
+    </div>
+
+
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

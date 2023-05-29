@@ -1,0 +1,12 @@
+
+name: anki_proj
+channels:
+    - defaults
+dependencies:
+    - pip
+    - python=3.9
+    - pip:
+          - requests
+          - openai
+          - flask
+          - pymupdf

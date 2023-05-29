@@ -1,0 +1,2 @@
+demo_pdf_1 is taken from https://ocw.mit.edu/courses/15-014-applied-macro-and-international-economics-ii-spring-2016/resources/mit15_014s16_chapter8/
+demo_pdf_2 is taken from https://proceedings.neurips.cc/paper/2020/hash/985e9a46e10005356bbaf194249f6856-Abstract.html . Yes, I used one of my own papers because I figured it was probably legal.
