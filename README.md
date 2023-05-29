@@ -28,11 +28,14 @@ export OPENAI_API_KEY="<YOUR SECRET KEY>"
 or opening your shell configuration file (most often `~/.bashrc`) and pasting the export
 line into there.
 
-## Setting up the direct connection to Anki.
+## Editing the cards
+Once the cards are generated you can select which ones you want to keep and edit the questions and answers before exporting them. 
+
+## Exporting the cards
 To make life easier, we have two convenience modes for exporting your anki cards.
-First of all, we have two buttons at the bottom of the flask webpage. One 
+First of all, we have two buttons at the bottom of the flask webpage. 
 `Get Txt File` writes the results to a line-separated file called `anki_cards.txt`.
-The other uses the [Anki Connect](https://ankiweb.net/shared/info/2055492159) app. To set 
+The other button uses the [Anki Connect](https://ankiweb.net/shared/info/2055492159) app to directly create cards. To set 
 this up, follow the link, then go into the `text_to_anki.py` file, change the `DECK_NAME`
 variable to your desired deck and run it.
 
@@ -49,7 +52,7 @@ For testing it out, we provide a convenient pdf called `test_pdf.pdf`. It's a fa
 We provide some example demos in the demo_pdfs folder. Take a look at the highlighting pattern there and mess around with it!
 
 ## Highlight intelligently
-Keep in mind, when you highlight a section of text, you bring a lot of context into it. GPT does not have this context! It's **best if you highlight one or two sentences that have very clear, unambiguous meaning.**
+Keep in mind, when you highlight a section of text, you bring a lot of context into it. GPT does not have this context! It's **best if you highlight one or two sentences that have very clear, unambiguous meaning.** You can also unselect and edit question/answer pairs to fine tune the card before uploading to Anki. 
 ### Don't highlight huge chunks of text
 If you highlight an entire page, I have no idea what it'll do. Probably something dumb.
 ### Don't highlight half of a line or an incomplete sentence.
