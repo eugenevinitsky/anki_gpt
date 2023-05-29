@@ -13,6 +13,11 @@
             $('#anki-form').attr('action', "{{ url_for('upload_to_txt') }}");
             $('#anki-form').submit();
         });
+
+        $('#pdf_file').change(function(){
+            var filename = $(this).val().split('\\').pop();
+            $('#file-name').text(filename);
+        });
     });
 </script>
 
@@ -67,13 +72,16 @@
         display: flex;
         justify-content: center;
       }
-      .upload-button {
+      .upload-button, .custom-file-upload {
         font-size: 14px;
         background-color: white;
         border: none;
         margin: 0.75em 0.75em;
         border-radius: 4px;
         padding: 0.25em 1em;
+      }
+      input[type="file"] {
+        display: none;
       }
     </style>
   </head>
@@ -85,7 +93,9 @@
 
     <div class="button-container">
       <form method="POST" enctype="multipart/form-data" action="{{ url_for('analyze_pdf') }}" style="margin-bottom: 2.5em;">
-        <input type="file" name="pdf_file">
+        <label for="pdf_file" class="custom-file-upload">Browse</label>
+        <input type="file" id="pdf_file" name="pdf_file">
+        <span id="file-name"></span>
         <input type="submit" value="Get Anki Cards!" class="upload-button">
       </form>
     </div>
