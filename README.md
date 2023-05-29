@@ -1,3 +1,6 @@
+
+![output](https://github.com/eugenevinitsky/anki_gpt/assets/7660397/3b8b9396-dff7-48dd-9ec2-55e547d67c12)
+
 # Why?
 Both of us are big Anki users but often find that writing the cards can be fairly dull. We built this to make it easy to convert PDFs into Anki cards.
 
