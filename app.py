@@ -95,13 +95,5 @@ def upload_to_txt():
     write_to_txt(cards_to_write)
     return render_template('index.html')
 
-    # write_to_anki(cards_to_write)
-
-# def upload_to_anki(text):
-#     # Do your processing on the text here and return the results as a string
-#     # For example, you could use the AnkiConnect API to create a new note in Anki
-    
-#     return "Text uploaded to Anki!"
-
 if __name__ == '__main__':
     app.run(debug=True)
