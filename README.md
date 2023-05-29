@@ -1,3 +1,5 @@
+![output](https://github.com/eugenevinitsky/anki_gpt/assets/7660397/5efd5ce4-81bf-4cca-8bea-00bc1fad7c3d)
+
 # Why?
 Both of us are big Anki users but often find that writing the cards can be fairly dull. We built this to make it easy to convert PDFs into Anki cards.
 
@@ -29,7 +31,7 @@ line into there.
 ## Setting up the direct connection to Anki.
 To make life easier, we have two convenience modes for exporting your anki cards.
 First of all, we have two buttons at the bottom of the flask webpage. One 
-`export to txt` writes the results to a line-separated file called `results.txt`.
+`Get Txt File` writes the results to a line-separated file called `anki_cards.txt`.
 The other uses the [Anki Connect](https://ankiweb.net/shared/info/2055492159) app. To set 
 this up, follow the link, then go into the `text_to_anki.py` file, change the `DECK_NAME`
 variable to your desired deck and run it.
